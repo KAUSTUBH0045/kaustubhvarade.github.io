@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaustubh | Portfolio</title>
+
+    <!-- AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- ICONS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: "Times New Roman", serif;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle at 20% 30%, #5f00ff60, transparent 60%),
+                        radial-gradient(circle at 80% 70%, #9b00ff50, transparent 60%),
+                        radial-gradient(circle at 50% 50%, #d500ff30, transparent 60%);
+            filter: blur(120px);
+            pointer-events: none;
+            z-index: -2;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(90deg, rgba(0,0,0,0.25) 1px, transparent 1px),
+                linear-gradient(rgba(0,0,0,0.25) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: -1;
+        }
+
+        /* TOP SECTION */
+        .top-section {
+            display: flex;
+            gap: 40px;
+            padding: 80px 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .hero-text {
+            flex: 1;
+            min-width: 280px;
+            text-align: left;
+            max-width: 450px;
+        }
+        .hero-text h1 span { transition: 0.3s; }
+        .hero-text h1 span:hover {
+            color: #d38aff;
+            text-shadow: 0 0 10px #b066ff;
+        }
+        .hero-text h1 { font-size: 46px; margin-bottom: 10px; }
+        .hero-text h2 { font-size: 20px; font-weight: 500; color: #b066ff; }
+
+        .btn {
+            background: #b066ff;
+            padding: 12px 30px;
+            margin-top: 20px;
+            border-radius: 8px;
+            display: inline-block;
+            text-decoration: none;
+            color: #fff;
+            font-weight: 600;
+            transition: 0.25s;
+        }
+        .btn:hover {
+            background: #d38aff;
+            transform: translateY(-3px);
+            box-shadow: 0 0 12px #b066ff;
+        }
+
+        /* ABOUT BOX */
+        .about-box {
+            flex: 1;
+            min-width: 280px;
+            max-width: 440px;
+            background: rgba(176,102,255,0.15);
+            padding: 30px;
+            border-radius: 14px;
+            border: 1px solid #b066ff55;
+            backdrop-filter: blur(6px);
+            text-align: left;
+            line-height: 1.7;
+            transition: 0.3s;
+        }
+        .about-box:hover {
+            transform: translateY(-4px);
+            border-color: #d38aff;
+            box-shadow: 0 0 12px #b066ff44;
+        }
+        .about-box h3 {
+            color: #d38aff;
+            font-size: 26px;
+            margin-bottom: 12px;
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 60px 20px;
+            max-width: 900px;
+            margin: auto;
+        }
+        .section-title {
+            font-size: 30px;
+            transition: 0.3s;
+            margin-bottom: 25px;
+        }
+        .section-title:hover {
+            color: #d38aff;
+            text-shadow: 0 0 10px #b066ff;
+        }
+
+        /* SKILLS */
+        .skills span {
+            padding: 10px 18px;
+            margin: 6px;
+            border-radius: 8px;
+            display: inline-block;
+            background: rgba(176,102,255,0.15);
+            border: 1px solid #b066ff44;
+            transition: 0.25s;
+        }
+        .skills span:hover {
+            transform: scale(1.12);
+            border-color: #d38aff;
+            background: #b066ff33;
+            box-shadow: 0 0 10px #b066ff44;
+        }
+
+        /* PROJECTS */
+        .projects-grid {
+            display: grid;
+            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .project-card {
+            background: rgba(176,102,255,0.18);
+            border: 1px solid #b066ff55;
+            border-radius: 14px;
+            backdrop-filter: blur(8px);
+            padding: 18px;
+            transition: 0.35s;
+            overflow: hidden;
+        }
+        .project-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 0 18px #b066ff77;
+            border-color: #d38aff;
+        }
+
+        .project-card img,
+        .project-card video {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 12px;
+        }
+
+        .project-card h3 {
+            margin: 8px 0;
+            font-size: 22px;
+            color: #d38aff;
+        }
+
+        .project-card p {
+            opacity: 0.85;
+            margin-bottom: 14px;
+        }
+
+        .project-links a {
+            margin-right: 15px;
+            color: #b066ff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.25s;
+        }
+        .project-links a:hover {
+            color: #d38aff;
+            text-shadow: 0 0 8px #b066ff;
+        }
+        .project-links i { margin-right: 6px; }
+
+        /* CONTACT */
+        .contact-box {
+            max-width: 420px;
+            margin: auto;
+            padding: 25px;
+            border-radius: 12px;
+            background: rgba(176,102,255,0.12);
+            border: 1px solid #b066ff44;
+            text-align: left;
+            line-height: 1.8;
+        }
+
+        footer {
+            padding: 20px;
+            margin-top: 40px;
+            border-top: 1px solid #b066ff33;
+            font-size: 14px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- TOP -->
+<div class="top-section">
+
+    <div class="hero-text" data-aos="fade-right">
+        <h1>Hi, I'm <span>Kaustubh</span></h1>
+        <h2>Web Developer | Programmer | Tech Enthusiast</h2>
+        <a href="resume.pdf" class="btn" download>Download Resume</a>
+    </div>
+
+    <div class="about-box" data-aos="fade-left">
+        <h3>About Me</h3>
+        <p>
+            I am a dedicated developer passionate about building clean, functional 
+            and user-focused digital experiences. My work blends creative thinking 
+            with strong logic, helping me write efficient and meaningful solutions.
+        </p>
+        <p>
+            I enjoy full-stack development, backend logic, and data analytics. 
+            Whether designing interfaces, writing code, or analyzing data—I love 
+            challenging myself with new tools and technologies.
+        </p>
+        <p>
+            Currently, I’m focused on mastering modern frameworks and building 
+            impactful projects that help me grow every day.
+        </p>
+    </div>
+
+</div>
+
+<!-- SKILLS -->
+<section id="skills" data-aos="fade-up">
+    <h2 class="section-title">Skills</h2>
+    <div class="skills">
+        <span>HTML</span><span>CSS</span><span>JavaScript</span>
+        <span>React.js</span><span>Node.js</span>
+        <span>Express.js</span><span>MongoDB</span><span>MySQL</span>
+        <span>Python</span><span>C++</span>
+        <span>REST APIs</span><span>Git & GitHub</span>
+        <span>Bootstrap</span><span>Tailwind</span>
+        <span>VS Code</span><span>Postman</span>
+        <span>Firebase</span><span>Linux</span>
+        <span>Problem Solving</span><span>Teamwork</span>
+    </div>
+</section>
+
+<!-- ⭐ PROJECTS -->
+<section id="projects" data-aos="zoom-in">
+    <h2 class="section-title">Projects</h2>
+
+    <div class="projects-grid">
+
+        <!-- ⭐ PROJECT 1 – FITNESS TRACKER WEBSITE -->
+        <div class="project-card" data-aos="fade-up">
+            <img src="fitness.png" alt="Fitness Tracker Website">
+            
+            <h3>Fitness Tracker Website</h3>
+            <p>
+                A fully responsive fitness tracking web application designed to help users 
+                monitor workouts, track daily progress, view calories, and manage routines. 
+                Built using HTML, CSS, Bootstrap, and JavaScript with a clean and modern UI.
+            </p>
+
+            <div class="project-links">
+                <a href="https://kaustubh0045.github.io/FITTRACKER/" target="_blank"><i class="fa-solid fa-link"></i>Live Demo</a>
+                <a href="https://github.com/KAUSTUBH0045/FITTRACKER" target="_blank"><i class="fa-brands fa-github"></i>GitHub</a>
+            </div>
+        </div>
+
+        <!-- ⭐ PROJECT 2 – SYLLABUS GAP ANALYZER -->
+        <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+
+            <img src="gap.png" alt="Syllabus Gap Analyzer">
+
+            <h3>Syllabus Gap Analyzer</h3>
+            <p>
+                A data-analytics based platform that compares university syllabus with 
+                industry-required skills to identify skill gaps. Built using Python, Pandas, 
+                Streamlit, and Matplotlib with interactive dashboards for visualization.
+            </p>
+
+            <div class="project-links">
+                <a href="https://syllabusgap-github-io-2.onrender.com" target="_blank"><i class="fa-solid fa-link"></i>Live Demo</a>
+                <a href="https://github.com/KAUSTUBH0045/syllabusgap.github.io" target="_blank">
+                    <i class="fa-brands fa-github"></i>GitHub
+                </a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" data-aos="fade-up">
+    <h2 class="section-title">Contact</h2>
+
+    <div class="contact-box">
+        <p><i class="fas fa-envelope"></i><strong>Email:</strong> 
+            <a style="color: rgb(131, 5, 138);" href="mailto:kaustubhvarade88@gmail.com">
+                kaustubhvarade88@gmail.com
+            </a>
+        </p>
+
+        <p><i class="fa-solid fa-link"></i><strong>LinkedIn:</strong> 
+            <a style="color: rgb(130, 4, 104);" 
+               href="https://www.linkedin.com/in/kaustubh-varade-205290240" 
+               target="_blank">
+                Visit Profile
+            </a>
+        </p>
+
+        <p><i class="fa-brands fa-github"></i><strong>GitHub:</strong> 
+            <a style="color: rgb(135, 4, 121);" href="https://github.com/KAUSTUBH0045" target="_blank">
+                View Repositories
+            </a>
+        </p>
+    </div>
+</section>
+
+<footer data-aos="fade-up">
+    © 2025 Kaustubh | Portfolio
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>AOS.init();</script>
+
+</body>
+</html>
